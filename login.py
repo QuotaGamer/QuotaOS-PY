@@ -1,9 +1,9 @@
 from system.loginText import LOGINTEXT
-from system.opts import qlog as qopt
+from system.opts import qlog as q
 from users.users import users
 import os
 
-if qopt == True:
+if q == True:
     print("Quick Login (qlog) enabled.")
 print(LOGINTEXT)
 b=users.keys()
@@ -27,14 +27,21 @@ if username == "guest":
     os.system("python mss.py guest")
     exit()
 elif username == "qlog":
-    if qopt == True:
+    if q == True:
         os.system("python mss.py qlog")
     else:
         print("Nuh uh.")
     exit()
-elif username in a:
-    if username == "quota":
-        passwd=input("Password> ")
-        if passwd == users[username]:
-            os.system(f"python mss.py {username}")
-            exit()
+else:
+    userlist=a.split(", ")
+    print(userlist)
+    if username in userlist:
+        print("Yes.")
+        if username == "quota":
+            passwd=input("Password> ")
+            if passwd == users[username]:
+                os.system(f"python mss.py {username}")
+                exit()
+    else:
+        print(username)
+        print("Invalid user.")

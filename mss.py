@@ -1,4 +1,5 @@
 import sys, os
+from colorama import Fore
 from system.ver import version
 from users.users import users
 from system.functions import clear, about
@@ -21,27 +22,34 @@ else:
 def mainInterface() -> None:
     clear()
     print(f"""
-  Welcome to QuotaPYOS
+  Welcome to QuotaOS-PY
   Version: {version}
   
   User: {username}
-1. Applications (Broken)
-2. About Quota-PY OS (Broken)
-3. Exit Quota-PY OS
-4. Restart OS (Broken)
-5. Add a user (Broken)
-6. Switch users (Broken)
-7. Check for updates (Broken)""")
-    choice:int=input("> ")
-    print(choice)
-    if choice == 3:
-        print("Exiting...")
+1. {Fore.LIGHTGREEN_EX}Applications {Fore.RED}(Broken){Fore.WHITE}
+2. {Fore.CYAN}About QuotaOS{Fore.WHITE}
+3. {Fore.RED}Exit{Fore.WHITE}
+4. {Fore.MAGENTA}Restart {Fore.WHITE}or {Fore.MAGENTA}Switch user{Fore.WHITE}
+5. Add a user {Fore.RED}(Broken){Fore.WHITE}
+6. Check for updates {Fore.RED}(Broken){Fore.WHITE}
+""")
+    choice=int(input("> "))
+    if choice == 1:
+        raise NotImplementedError("I haven't made this yet, but it's next.")
+    elif choice == 2:
+        about()
+    elif choice == 3:
+        print("Goodbye!")
         exit()
-    # if choice == 2:
-    #     print("About")
-    #     about()
-    #     print("Interface!")
-    #     input()
-    #mainInterface()
+    elif choice == 4:
+        print("Restarting..")
+        clear()
+        os.system("python login.py")
+        exit()
+    elif choice == 5:
+        raise NotImplementedError("You cannot currently make new users.")
+    elif choice == 6:
+        raise NotImplementedError("You cannot currently check for updates.")
+    mainInterface()
 
 mainInterface()
