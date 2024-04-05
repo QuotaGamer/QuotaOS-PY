@@ -1,7 +1,7 @@
 from system.loginText import LOGINTEXT
 from system.opts import qlog as q
 from users.users import users
-import os, rsa
+import os
 
 if q == True:
     print("Quick Login (qlog) enabled.")
